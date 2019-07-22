@@ -16,6 +16,7 @@ est_gp = SymbolicRegressor(population_size=2000,
 
 est_gp.fit(loadedData.df[loadedData.feature_names], loadedData.df[loadedData.target_name])
 print(est_gp._program)
+print(numerai_score(loadedData.df[loadedData.target_name], est_gp.))
 
 def numerai_score(y_true, y_pred):
      rank_pred = y_pred.groupby(eras).apply(lambda x: x.rank(pct=True, method="first"))
